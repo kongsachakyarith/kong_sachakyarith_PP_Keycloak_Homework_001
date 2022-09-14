@@ -1,0 +1,11 @@
+spring:
+  r2dbc:
+    url: r2dbc:pool:postgresql://localhost:5555/cloud_db
+    password: secretpassword
+    username: cloudadmin
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          jwk-set-uri: http://localhost:8800/auth/realms/cloud_server/protocol/openid-connect/certs
+          issuer-uri: http://localhost:8800/auth/realms/cloud_server
