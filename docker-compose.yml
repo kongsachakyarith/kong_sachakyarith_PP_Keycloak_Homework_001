@@ -15,7 +15,7 @@ x-keycloak-env: &keycloak-env
   KEYCLOAK_USER: admin
   KEYCLOAK_PASSWORD: kcpassword
   KEYCLOAK_LOGLEVEL: DEBUG
-  #  KEYCLOAK_IMPORT: /opt/realm.json -Dkeycloak.profile.feature.upload_scripts=enabled
+  KEYCLOAK_IMPORT: /opt/realm.json -Dkeycloak.profile.feature.upload_scripts=enabled
   ROOT_LOGLEVEL: DEBUG
 
 volumes:
@@ -61,8 +61,8 @@ services:
     image: jboss/keycloak:16.1.1
     restart: unless-stopped
     container_name: keycloak-server-demo
-      #    volumes:
-      #      - ../keycloak/realm.json:/opt/realm.json
+    volumes:
+      - ./keycloak/realm.json:/opt/realm.json
     environment:
       <<: *keycloak-env
     ports:
